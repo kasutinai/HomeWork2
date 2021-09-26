@@ -6,37 +6,37 @@ namespace Prototype
     {
         static void Main(string[] args)
         {
-            City city           = new City("MyCloneCity");
-            Street street       = new Street(city.CityName, "MyCloneStreet");
-            Building building   = new Building(street.CityName, street.StreetName, "MyCloneBuilding");
+            Video video         = new Video("MyCloneVideo");
+            SoapOpera soapOpera = new SoapOpera(video.VideoName, "MyCloneSoapOpera");
+            Episode episode     = new Episode(soapOpera.VideoName, soapOpera.SoapOperaName, 2);
 
-            City city1          = city.MyClone();
-            Street street1      = street.MyClone();
-            Building building1  = building.MyClone();
+            Video video1            = video.MyClone();
+            SoapOpera soapOpera1    = soapOpera.MyClone();
+            Episode episode1        = episode.MyClone();
 
-            ChangeAddress(city, "CloneCity", street, "CloneStreet", building, "CloneBuilding");            
+            ChangeAddress(video, "CloneVideo", soapOpera, "CloneSoapOpera", episode, 3);            
 
-            City city2          = (City)city.Clone();
-            Street street2      = (Street) street.Clone();
-            Building building2  = (Building) building.Clone();
+            Video video2            = (Video)video.Clone();
+            SoapOpera soapOpera2    = (SoapOpera)soapOpera.Clone();
+            Episode episode2        = (Episode)episode.Clone();
 
-            ChangeAddress(city, "BasicCity", street, "BasicStreet", building, "BasicBuilding");
+            ChangeAddress(video, "BasicVideo", soapOpera, "BasicSoapOpera", episode, 1);
 
-            Console.WriteLine($"Basic : {city.ToString()} {street.ToString()} {building.ToString()}");
-            Console.WriteLine($"MyClone : {city1.ToString()} {street1.ToString()} {building1.ToString()}");
-            Console.WriteLine($"Clone : {city2.ToString()} {street2.ToString()} {building2.ToString()}");
+            Console.WriteLine($"Basic : {video.ToString()} {soapOpera.ToString()} {episode.ToString()}");
+            Console.WriteLine($"MyClone : {video1.ToString()} {soapOpera1.ToString()} {episode1.ToString()}");
+            Console.WriteLine($"Clone : {video2.ToString()} {soapOpera2.ToString()} {episode2.ToString()}");
 
             Console.ReadKey();
         }
 
-        public static void ChangeAddress(City city, string cityName, Street street, string streetName, Building building, string buildingNumber)
+        public static void ChangeAddress(Video video, string videoName, SoapOpera soapOpera, string soapOperaName, Episode episode, int episodeNumber)
         {
-            city.CityName = cityName;
-            street.CityName = cityName;
-            street.StreetName = streetName;
-            building.CityName = cityName;
-            building.StreetName = streetName;
-            building.BuildingNumber = buildingNumber;
+            video.VideoName         = videoName;
+            soapOpera.VideoName     = videoName;
+            soapOpera.SoapOperaName = soapOperaName;
+            episode.VideoName       = videoName;
+            episode.SoapOperaName   = soapOperaName;
+            episode.EpisodeNumber   = episodeNumber;
         }
     }
 }
